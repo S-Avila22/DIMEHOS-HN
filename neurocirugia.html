@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productos - Neurocirugía</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(0, 64, 128, 0.03),
+          rgba(0, 64, 128, 0.03) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+      min-height: 100vh;
+    }
+    .navbar {
+      background-color: #004080;
+    }
+    .navbar-brand img {
+      height: 40px;
+    }
+    .header-categoria {
+      max-width: 1000px;
+      margin: 20px auto 30px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+    .header-categoria img {
+      width: 280px;
+      height: auto;
+    }
+    .buscador-categoria {
+      max-width: 300px;
+      width: 100%;
+    }
+    .categoria-btns {
+      max-width: 1000px;
+      margin: 0 auto 30px auto;
+      padding: 0 15px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .productos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto 50px auto;
+      padding: 0 15px;
+    }
+    .producto {
+      position: relative;
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 64, 128, 0.15);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .producto:hover {
+      box-shadow: 0 15px 35px rgba(0, 64, 128, 0.3);
+    }
+    .producto img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      transition: transform 0.3s;
+    }
+    .producto:hover img {
+      transform: scale(1.05);
+    }
+    .producto-nombre {
+      font-weight: bold;
+      color: #004080;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    .descripcion-hover {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,50,0.7);
+      color: white;
+      padding: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.8rem;
+      border-radius: 0 0 10px 10px;
+    }
+    .producto:hover .descripcion-hover {
+      opacity: 1;
+    }
+    .btn-buy {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-bottom: 5px;
+    }
+    .btn-buy:hover {
+      background-color: #0059b3;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 30px 0;
+    }
+    .contactanos-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #004080;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .contactanos-btn:hover {
+      background: #0059b3;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background: linear-gradient(90deg, #004080, #0066cc); position: fixed; top: 0; width: 100%; z-index: 999;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="ima/logo1.png" alt="DIMEHOS" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="nosotros.html"><i class="bi bi-info-circle-fill"></i> Sobre Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="servicios.html"><i class="bi bi-briefcase-fill"></i> Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="productos.html"><i class="bi bi-box-seam"></i> Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeria.html"><i class="bi bi-images"></i> Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacto.html"><i class="bi bi-envelope-fill"></i> Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div style="height: 70px;"></div>
+
+<!-- HEADER CATEGORÍA -->
+<div class="header-categoria" style="max-width: 1000px; margin: 20px auto 30px auto; display: flex; align-items: center; justify-content: space-between; padding: 0 15px;">
+  <h2 style="color: #004080; font-weight: bold; margin: 0;">Neurocirugía</h2>
+  <div class="buscador-categoria" style="max-width: 300px; width: 100%;">
+    <input
+      type="text"
+      id="buscador"
+      class="form-control"
+      placeholder="Buscar producto en Neurocirugía..."
+      onkeyup="filtrarProductos()"
+    />
+  </div>
+</div>
+
+
+<!-- BOTONES CATEGORÍAS -->
+<div class="categoria-btns">
+  <a href="index.html#productos" class="btn btn-outline-primary">Volver a productos</a>
+
+  <a href="endovascular.html" class="btn btn-outline-primary">Terapia Endovascular Metronic</a>
+  <a href="maxilofacial.html" class="btn btn-outline-primary">Maxilofacial</a>
+  <a href="neurocirugia.html" class="btn btn-outline-primary">Neurocirugía</a>
+  <a href="productoshospitalario.html" class="btn btn-outline-primary">Productos Hospitalarios</a>
+</div>
+
+<!-- PRODUCTOS -->
+<div class="productos-container" id="productos-container">
+
+  <div class="producto">
+    <img src="ima/neuro/Acracut.png" alt="Acracut" />
+    <div class="producto-nombre">Acracut</div>
+    <button class="btn-buy" onclick="comprar('Acracut')">Comprar ahora</button>
+    <div class="descripcion-hover">Sirve para perforar el cráneo y extraer un trozo de hueso.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/caja-cervical-con-canastilla.png" alt="Caja Cervical con Canastilla" />
+    <div class="producto-nombre">Caja Cervical con Canastilla</div>
+    <button class="btn-buy" onclick="comprar('Caja Cervical con Canastilla')">Comprar ahora</button>
+    <div class="descripcion-hover">Dispositivo que proporciona estabilidad mecánica y facilita la fusión.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Caja-Cervical-PEEK-SQUALE.png" alt="Caja Cervical PEEK-SQUALE" />
+    <div class="producto-nombre">Caja Cervical PEEK-SQUALE</div>
+    <button class="btn-buy" onclick="comprar('Caja Cervical PEEK-SQUALE')">Comprar ahora</button>
+    <div class="descripcion-hover">Se usa en fusión espinal para reemplazar discos dañados.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Caja-lumbar-TLIF.png" alt="Caja Lumbar TLIF" />
+    <div class="producto-nombre">Caja Lumbar TLIF</div>
+    <button class="btn-buy" onclick="comprar('Caja Lumbar TLIF')">Comprar ahora</button>
+    <div class="descripcion-hover">Usada en cirugía lumbar para fusión y estabilización.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Cesta-de-corpectomia.png" alt="Cesta de Corpectomia" />
+    <div class="producto-nombre">Cesta de Corpectomia</div>
+    <button class="btn-buy" onclick="comprar('Cesta de Corpectomia')">Comprar ahora</button>
+    <div class="descripcion-hover">Remueve parte de la vértebra afectada en cirugías vertebrales.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Clips-de-aurisma.png" alt="Clips de Aneurisma" />
+    <div class="producto-nombre">Clips de Aneurisma</div>
+    <button class="btn-buy" onclick="comprar('Clips de Aneurisma')">Comprar ahora</button>
+    <div class="descripcion-hover">Clip quirúrgico metálico para cerrar aneurismas cerebrales.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Drenaje-quirúrgico-para-hematomas.png" alt="Drenaje Quirúrgico para Hematomas" />
+    <div class="producto-nombre">Drenaje Quirúrgico para Hematomas</div>
+    <button class="btn-buy" onclick="comprar('Drenaje Quirúrgico para Hematomas')">Comprar ahora</button>
+    <div class="descripcion-hover">Extrae líquido del sitio quirúrgico y reduce infecciones.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Drenaje-Ventricular-Externo.png" alt="Drenaje Ventricular Externo" />
+    <div class="producto-nombre">Drenaje Ventricular Externo</div>
+    <button class="btn-buy" onclick="comprar('Drenaje Ventricular Externo')">Comprar ahora</button>
+    <div class="descripcion-hover">Catéter temporal para drenar LCR hacia un sistema externo.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Kit-de-Vertebroplastía-(Mendec-Spine-Kit).png" alt="Kit de Vertebroplastía" />
+    <div class="producto-nombre">Kit de Vertebroplastía</div>
+    <button class="btn-buy" onclick="comprar('Kit de Vertebroplastía')">Comprar ahora</button>
+    <div class="descripcion-hover">Sistema para mezcla e inyección de cemento en vértebras fracturadas.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Malla-para-Craneoplastía.png" alt="Malla para Cráneoplastía" />
+    <div class="producto-nombre">Malla para Cráneoplastía</div>
+    <button class="btn-buy" onclick="comprar('Malla para Cráneoplastía')">Comprar ahora</button>
+    <div class="descripcion-hover">Solución para reconstrucción craneal.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Mendec-Cráneo.png" alt="Mendec Cráneo" />
+    <div class="producto-nombre">Mendec Cráneo</div>
+    <button class="btn-buy" onclick="comprar('Mendec Cráneo')">Comprar ahora</button>
+    <div class="descripcion-hover">Resina acrílica para reparar defectos craneales.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Parche-de-duramadre.png" alt="Parche Duramadre" />
+    <div class="producto-nombre">Parche Duramadre</div>
+    <button class="btn-buy" onclick="comprar('Parche Duramadre')">Comprar ahora</button>
+    <div class="descripcion-hover">Se usa para reparar defectos en la duramadre.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Placa-Cervical-Anterior.png" alt="Placa Cervical Anterior" />
+    <div class="producto-nombre">Placa Cervical Anterior</div>
+    <button class="btn-buy" onclick="comprar('Placa Cervical Anterior')">Comprar ahora</button>
+    <div class="descripcion-hover">Sistema para estabilizar la columna cervical.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Stypcel.png" alt="Stypcel" />
+    <div class="producto-nombre">Stypcel</div>
+    <button class="btn-buy" onclick="comprar('Stypcel')">Comprar ahora</button>
+    <div class="descripcion-hover">Tela absorbible para control de sangrado.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Tornillos-cervicales-Posteriores.png" alt="Tornillos Cervicales Posteriores" />
+    <div class="producto-nombre">Tornillos Cervicales Posteriores</div>
+    <button class="btn-buy" onclick="comprar('Tornillos Cervicales Posteriores')">Comprar ahora</button>
+    <div class="descripcion-hover">Fijación occipitocervicotorácica.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Tornillos-Transpedículares.png" alt="Tornillos Transpedículares" />
+    <div class="producto-nombre">Tornillos Transpedículares</div>
+    <button class="btn-buy" onclick="comprar('Tornillos Transpedículares')">Comprar ahora</button>
+    <div class="descripcion-hover">Estabilizan lesiones espinales.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/neuro/Válvula-para-Hidrocefalia adulto-infantil-y-neonatal.png" alt="Válvula para Hidrocefalia" />
+    <div class="producto-nombre">Válvula para Hidrocefalia</div>
+    <button class="btn-buy" onclick="comprar('Válvula para Hidrocefalia')">Comprar ahora</button>
+    <div class="descripcion-hover">Controla el flujo del líquido cefalorraquídeo.</div>
+  </div>
+
+</div>
+
+
+  <!-- BOTÓN CONTÁCTANOS que abre modal -->
+  <button type="button" class="contactanos-btn" data-bs-toggle="modal" data-bs-target="#contactoModal">
+    Contáctanos
+  </button>
+
+  <!-- MODAL CONTACTO -->
+  <div class="modal fade" id="contactoModal" tabindex="-1" aria-labelledby="contactoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="contactoModalLabel"><i class="bi bi-envelope-fill"></i> Contacto DIMEHOS</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <h6>San Pedro Sula</h6>
+          <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+          <p><a href="https://wa.me/50494610407" target="_blank" class="btn btn-success w-100 mb-3"><i class="bi bi-whatsapp"></i> WhatsApp SPS +9461-0407</a></p>
+          <hr>
+          <h6>Tegucigalpa</h6>
+          <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+          <p><a href="https://wa.me/50497214099" target="_blank" class="btn btn-success w-100"><i class="bi bi-whatsapp"></i> WhatsApp TGU +504 9721-4099</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container text-center text-md-start">
+    <div class="row justify-content-between">
+      <div class="col-md-6 mb-3">
+        <h5>San Pedro Sula</h5>
+        <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+        <p><a href="https://wa.me/50494610407" target="_blank" class="text-white">WhatsApp SPS +9461-0407</a></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h5>Tegucigalpa</h5>
+        <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+        <p><a href="https://wa.me/50497214099" target="_blank" class="text-white">WhatsApp TGU +9721-4099</a></p>
+      </div>
+    </div>
+    <hr class="bg-light" />
+    <p class="text-center mb-0">&copy; 2025 DIMEHOS. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  function filtrarProductos() {
+    const filtro = document.getElementById('buscador').value.toLowerCase();
+    document.querySelectorAll('.producto').forEach(prod => {
+      const nombre = prod.querySelector('.producto-nombre').textContent.toLowerCase();
+      prod.style.display = nombre.includes(filtro) ? '' : 'none';
+    });
+  }
+  function comprar(producto) {
+    const link = `https://wa.me/50494610407?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(producto)}`;
+    window.open(link, '_blank');
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

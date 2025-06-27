@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productos - Maxilofacial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(0, 64, 128, 0.03),
+          rgba(0, 64, 128, 0.03) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+      min-height: 100vh;
+    }
+    .navbar { background-color: #004080; }
+    .navbar-brand img { height: 40px; }
+    .header-categoria {
+      max-width: 1000px;
+      margin: 20px auto 30px auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-categoria h2 {
+      color: #004080;
+      font-weight: bold;
+      margin: 0;
+    }
+    .buscador-categoria { max-width: 300px; width: 100%; }
+    .categoria-btns {
+      max-width: 1000px;
+      margin: 0 auto 30px auto;
+      padding: 0 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .productos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: 0 auto 50px auto;
+      padding: 0 15px;
+    }
+    .producto {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 64, 128, 0.15);
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow 0.3s;
+    }
+    .producto:hover { box-shadow: 0 15px 35px rgba(0, 64, 128, 0.3); }
+    .producto img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      transition: transform 0.3s;
+    }
+    .producto:hover img { transform: scale(1.05); }
+    .producto-nombre {
+      font-weight: bold;
+      color: #004080;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .btn-buy {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-buy:hover { background-color: #0059b3; }
+  .descripcion-hover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 50, 0.7);
+  color: white;
+  padding: 6px 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 0 0 10px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  pointer-events: none; /* <- agrega esta línea */
+}
+
+    .producto:hover .descripcion-hover { opacity: 1; }
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 30px 0;
+    }
+    .contactanos-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #004080;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .contactanos-btn:hover { background: #0059b3; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background: linear-gradient(90deg, #004080, #0066cc); position: fixed; top: 0; width: 100%; z-index: 999;">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="ima/logo1.png" alt="DIMEHOS"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="nosotros.html"><i class="bi bi-info-circle-fill"></i> Sobre Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="servicios.html"><i class="bi bi-briefcase-fill"></i> Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="productos.html"><i class="bi bi-box-seam"></i> Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeria.html"><i class="bi bi-images"></i> Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacto.html"><i class="bi bi-envelope-fill"></i> Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div style="height: 70px;"></div>
+
+<!-- HEADER CATEGORÍA -->
+<div class="header-categoria">
+  <h2>Maxilofacial</h2>
+  <div class="buscador-categoria">
+    <input type="text" id="buscador" class="form-control" placeholder="Buscar producto en Maxilofacial..." onkeyup="filtrarProductos()">
+  </div>
+</div>
+
+<!-- BOTONES CATEGORÍAS -->
+<div class="categoria-btns">
+ <a href="index.html#productos" class="btn btn-outline-primary">Volver a productos</a>
+
+  <a href="endovascular.html" class="btn btn-outline-primary">Terapia Endovascular Metronic</a>
+  <a href="ortopedia.html" class="btn btn-outline-primary">Ortopedia</a>
+  <a href="neurocirugia.html" class="btn btn-outline-primary">Neurocirugía</a>
+  <a href="productoshospitalario.html" class="btn btn-outline-primary">Productos Hospitalarios</a>
+</div>
+
+<!-- PRODUCTOS -->
+<div class="productos-container" id="productos-container">
+
+  <!-- Producto 1 -->
+  <div class="producto">
+    <img src="ima/maxi/Miniplacas.png" alt="Miniplacas">
+    <div class="producto-nombre">Miniplacas</div>
+    <button class="btn-buy" onclick="comprar('Miniplacas')">Comprar ahora</button>
+    <div class="descripcion-hover">Para fracturas mandibulares, cigomáticas y maxilares.</div>
+  </div>
+
+  <!-- Producto 2 -->
+  <div class="producto">
+    <img src="ima/maxi/SISTEMA-DELPHOS-.6MM.png" alt="Sistema Delphos 0.6MM">
+    <div class="producto-nombre">Sistema Delphos 0.6MM</div>
+    <button class="btn-buy" onclick="comprar('Sistema Delphos 0.6MM')">Comprar ahora</button>
+    <div class="descripcion-hover">Sistema rígido para fracturas craneales y maxilares.</div>
+  </div>
+
+  <!-- Producto 3 -->
+  <div class="producto">
+    <img src="ima/maxi/SISTEMA-DELPHOS-2.0.png" alt="Sistema Delphos 2.0MM">
+    <div class="producto-nombre">Sistema Delphos 2.0MM</div>
+    <button class="btn-buy" onclick="comprar('Sistema Delphos 2.0MM')">Comprar ahora</button>
+    <div class="descripcion-hover">Implantes rígidos para cirugía maxilofacial y oral.</div>
+  </div>
+
+  <!-- Producto 4 -->
+  <div class="producto">
+    <img src="ima/maxi/SISTEMA-ORTHOGNATIC-IMPLANTES-DELPHOS.png" alt="Sistema Orthognatic Implantes">
+    <div class="producto-nombre">Sistema Orthognatic Implantes</div>
+    <button class="btn-buy" onclick="comprar('Sistema Orthognatic Implantes')">Comprar ahora</button>
+    <div class="descripcion-hover">Para reconstrucción ortognática y maxilomandibular.</div>
+  </div>
+
+  <!-- ...añade aquí todos los demás que tengas para Maxilofacial de la misma manera... -->
+
+</div>
+
+<!-- BOTÓN CONTÁCTANOS -->
+<button type="button" class="contactanos-btn" data-bs-toggle="modal" data-bs-target="#contactoModal">
+  Contáctanos
+</button>
+
+<!-- MODAL CONTACTO -->
+<div class="modal fade" id="contactoModal" tabindex="-1" aria-labelledby="contactoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="contactoModalLabel"><i class="bi bi-envelope-fill"></i> Contacto DIMEHOS</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <h6>San Pedro Sula</h6>
+        <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+        <p><a href="https://wa.me/50494610407" target="_blank" class="btn btn-success w-100 mb-3"><i class="bi bi-whatsapp"></i> WhatsApp SPS +9461-0407</a></p>
+        <hr>
+        <h6>Tegucigalpa</h6>
+        <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+        <p><a href="https://wa.me/50497214099" target="_blank" class="btn btn-success w-100"><i class="bi bi-whatsapp"></i> WhatsApp TGU +9721-4099</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container text-center text-md-start">
+    <div class="row justify-content-between">
+      <div class="col-md-6 mb-3">
+        <h5>San Pedro Sula</h5>
+        <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+        <p><a href="https://wa.me/50494610407" target="_blank" class="text-white">WhatsApp SPS +9461-0407</a></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h5>Tegucigalpa</h5>
+        <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+        <p><a href="https://wa.me/50497214099" target="_blank" class="text-white">WhatsApp TGU +9721-4099</a></p>
+      </div>
+    </div>
+    <hr class="bg-light" />
+    <p class="text-center mb-0">&copy; 2025 DIMEHOS. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  function filtrarProductos() {
+    const filtro = document.getElementById('buscador').value.toLowerCase();
+    document.querySelectorAll('.producto').forEach(prod => {
+      const nombre = prod.querySelector('.producto-nombre').textContent.toLowerCase();
+      prod.style.display = nombre.includes(filtro) ? '' : 'none';
+    });
+  }
+  function comprar(producto) {
+    const link = `https://wa.me/50494610407?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(producto)}`;
+    window.open(link, '_blank');
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

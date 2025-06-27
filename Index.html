@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DIMEHOS | Inicio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+<!-- Bootstrap CSS + Bootstrap Icons (en el <head>) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #7094c9, #aeb2c9);
+      background-image: repeating-linear-gradient(45deg, rgba(0, 64, 128, 0.03), rgba(0, 64, 128, 0.03) 10px, transparent 10px, transparent 20px);
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .navbar {
+      background-color: #7a94b1;
+    }
+    .bienvenida {
+      text-align: center;
+      padding: 20px;
+      color: #004080;
+      font-weight: bold;
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px rgba(0, 64, 128, 0.3);
+    }
+    .info-card {
+      background: #f0f8ff;
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,64,128,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0,64,128,0.3);
+    }
+    .info-card img {
+      max-width: 60px;
+      margin-bottom: 10px;
+    }
+    .marcas {
+      background: #f0f8ff;
+      padding: 30px 0;
+    }
+    .marca-logo {
+      max-width: 120px;
+      margin: 10px;
+      filter: drop-shadow(0 0 5px #66a3ff);
+      transition: transform 0.3s, filter 0.3s;
+    }
+    .marca-logo:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px #004080);
+    }
+    #modo-noche-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+      background: transparent;
+      color: #ffcc00;
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    #modo-noche-btn:hover {
+      color: #ffe066;
+    }
+    body.noche {
+      background-color: #1a1a1a !important;
+      color: white !important;
+    }
+    body.noche .navbar,
+    body.noche footer {
+      background-color: #000 !important;
+    }
+    body.noche .info-card,
+    body.noche .marcas {
+      background-color: #2c2c2c !important;
+    }
+    .contactanos-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #004080;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1050;
+      cursor: pointer;
+      border: none;
+    }
+    .contactanos-btn:hover {
+      background: #0059b3;
+}
+
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 3px #999;
+      z-index: 1000;
+    }
+    .whatsapp-float:hover {
+      background-color: #1ebe57;
+      color: white;
+      text-decoration: none;
+    }
+    .whatsapp-icon {
+      margin-top: 13px;
+    }
+    .tv-carousel {
+      max-width: 1000px;
+      margin: auto;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      border: 8px solid #333;
+      background-color: #000;
+    }
+    .tv-carousel img {
+      height: 400px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Botón Día/Noche -->
+<div id="modo-noche-btn">
+  <i class="bi bi-moon-fill" id="icono-modo"></i>
+</div>
+
+<!-- NAVBAR ONE PAGE MEJORADO -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#inicio">
+      <img src="ima/logo1.png" alt="DIMEHOS" style="height: 40px; margin-right: 10px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#inicio"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#nosotros"><i class="bi bi-info-circle-fill"></i> Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="#productos"><i class="bi bi-box-seam"></i> Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicios"><i class="bi bi-briefcase-fill"></i> Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeria"><i class="bi bi-images"></i> Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto"><i class="bi bi-envelope-fill"></i> Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ESTILO CSS para que no tape contenido -->
+<style>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
+
+  .navbar {
+    background: linear-gradient(90deg, #5fa1e2, #235d97);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1050;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s;
+  }
+
+  .navbar-nav .nav-link:hover {
+    transform: scale(1.05);
+    color: #22a51b !important;
+  }
+
+  @media (max-width: 991px) {
+    .navbar-nav {
+      background-color: #004080;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .navbar-nav .nav-link {
+      padding: 8px 12px;
+    }
+  }
+</style>
+
+
+<!-- BIENVENIDA -->
+<div class="bienvenida" style="margin-top:70px;">
+  <img src="ima/logo1.png" alt="DIMEHOS" style="height: 40px;">
+</div>
+
+
+<!-- CARRUSEL -->
+<div id="carouselGalleryTV" class="carousel slide mb-4 tv-carousel" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active"><img src="ima/slide/Diapositiva1.JPG" class="d-block w-100" alt="1"></div>
+    <div class="carousel-item"><img src="ima/slide/Diapositiva2.JPG" class="d-block w-100" alt="2"></div>
+    <div class="carousel-item"><img src="ima/slide/Diapositiva3.JPG" class="d-block w-100" alt="3"></div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselGalleryTV" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselGalleryTV" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<!-- TARJETAS -->
+<section style="padding: 40px 0;">
+  <div class="container">
+    <div class="row text-center g-3">
+      <div class="col-6 col-md-3"><div class="info-card"><img src="ima/servicio al cliente.png" alt=""><h6>Servicio al Cliente</h6><p style="font-size: 0.9rem;">Atención personalizada para cada cliente</p></div></div>
+      <div class="col-6 col-md-3"><div class="info-card"><img src="ima/entrega.png" alt=""><h6>Entregas Gratis</h6><p style="font-size: 0.9rem;">Envíos sin costo</p></div></div>
+      <div class="col-6 col-md-3"><div class="info-card"><img src="ima/calidad garantizada.png" alt=""><h6>Calidad Garantizada</h6><p style="font-size: 0.9rem;">Productos certificados de alta calidad</p></div></div>
+      <div class="col-6 col-md-3"><div class="info-card"><img src="ima/cobertura.png" alt=""><h6>Cobertura en Clínicas y Hospitales</h6><p style="font-size: 0.9rem;">Llegamos a donde nos soliciten</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCAS -->
+<section class="marcas text-center">
+  <div class="container">
+    <h4 style="color: #004080; margin-bottom: 20px;">Nuestras Marcas</h4>
+    <div class="d-flex flex-wrap justify-content-center">
+      <img src="ima/13.05.15-New-Logo-Delphos-1024x724.png" class="marca-logo">
+      <img src="ima/gmreis-removebg-preview.png" class="marca-logo">
+      <img src="ima/Hpbio-300x162-removebg-preview.png" class="marca-logo">
+      <img src="ima/osd-page-accueil_03-.png" class="marca-logo">
+      <img src="ima/medprinlogo-removebg-preview.png" class="marca-logo">
+      <img src="ima/medtronic-removebg-preview.png" class="marca-logo">
+    </div>
+  </div>
+</section>
+
+
+<!-- SECCIÓN NOSOTROS -->
+<section class="container py-5" id="nosotros">
+  <div class="bienvenida">
+    <img src="ima/logo1.png" alt="DIMEHOS" style="height: 60px;" />
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="info-card">
+        <h2><i class="bi bi-people-fill"></i> Sobre Nosotros</h2>
+        <p>
+          Somos una empresa líder en el mercado, con más de 15 años ofreciendo productos y servicios de calidad, con un equipo altamente capacitado en el área de soluciones médicas, especializados en cráneo y columna.
+          ¡En DIMEHOS tenemos las soluciones para mejorar su calidad de vida!
+          Nuestra empresa cree en el compromiso con el pueblo Hondureño.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Nuestra Identidad</h2>
+
+  <div class="row gy-4">
+    <div class="col-md-6">
+      <div class="info-card h-100">
+        <h3><i class="bi bi-bullseye"></i> Misión</h3>
+        <p>
+          Proveer dispositivos médicos de calidad para satisfacer las necesidades de los médicos y pacientes, de una manera profesional y personalizada; y a la vez estar siempre a la vanguardia de las necesidades presentes y futuras del mercado.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="info-card h-100">
+        <h3><i class="bi bi-eye-fill"></i> Visión</h3>
+        <p>
+          Ser una de las mejores empresas distribuidoras de dispositivos médicos en Honduras, con productos innovadores y de la más alta calidad, adelantándonos a las necesidades de salud y mejorando la calidad de vida de nuestros clientes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección Categorías de Productos -->
+ <section id="productos">
+  <!-- contenido de productos aquí -->
+</section>
+
+<section class="container py-3">
+  <div class="intro-section text-center mb-4" style="color: #004080;">
+    <h1 style="font-weight: 900; font-size: 2.5rem; margin-bottom: 0.5rem;">Categorías de productos</h1>
+    <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: #003366;">
+      En DIMEHOS ofrecemos soluciones médicas innovadoras y de alta calidad para satisfacer todas sus necesidades en diferentes especialidades.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="category-card" style="cursor:pointer; border-radius:1rem; background: rgba(255, 255, 255, 0.25); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="ima/neuro.png" alt="Neurocirugía" style="max-height: 120px; margin: 10px auto 5px auto; border-radius: 1rem; transition: transform 0.3s ease;">
+        <div class="category-content text-center" style="padding: 0 1rem 1rem;">
+          <h5 style="font-size: 1.3rem; font-weight: 700; color: #002856; margin-bottom: 0.5rem; display:flex; align-items:center; justify-content:center; gap: 8px;">
+            <i class="bi bi-brain" style="color:#004080; font-size:1.5rem;"></i> Neurocirugía
+          </h5>
+          <p style="font-size:1rem; color:#004080; margin-bottom:1rem;">Soluciones avanzadas para intervenciones neurológicas.</p>
+          <a href="neurocirugia.html" class="btn" style="font-size: 0.95rem; padding: 0.45rem 1.2rem; background-color: #004080; color: white; border-radius: 30px; transition: background-color 0.3s ease; border: none;">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-card" style="cursor:pointer; border-radius:1rem; background: rgba(255, 255, 255, 0.25); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="ima/endovascular.png" alt="Terapia Endovascular" style="max-height: 120px; margin: 10px auto 5px auto; border-radius: 1rem; transition: transform 0.3s ease;">
+        <div class="category-content text-center" style="padding: 0 1rem 1rem;">
+          <h5 style="font-size: 1.3rem; font-weight: 700; color: #002856; margin-bottom: 0.5rem; display:flex; align-items:center; justify-content:center; gap: 8px;">
+            <i class="bi bi-heart-pulse" style="color:#004080; font-size:1.5rem;"></i> Terapia Endovascular Metronic
+          </h5>
+          <p style="font-size:1rem; color:#004080; margin-bottom:1rem;">Equipos de última generación para cirugías vasculares.</p>
+          <a href="endovascular.html" class="btn" style="font-size: 0.95rem; padding: 0.45rem 1.2rem; background-color: #004080; color: white; border-radius: 30px; transition: background-color 0.3s ease; border: none;">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-card" style="cursor:pointer; border-radius:1rem; background: rgba(255, 255, 255, 0.25); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="ima/orto.png" alt="Ortopedia" style="max-height: 120px; margin: 10px auto 5px auto; border-radius: 1rem; transition: transform 0.3s ease;">
+        <div class="category-content text-center" style="padding: 0 1rem 1rem;">
+          <h5 style="font-size: 1.3rem; font-weight: 700; color: #002856; margin-bottom: 0.5rem; display:flex; align-items:center; justify-content:center; gap: 8px;">
+            <i class="bi bi-activity" style="color:#004080; font-size:1.5rem;"></i> Ortopedia
+          </h5>
+          <p style="font-size:1rem; color:#004080; margin-bottom:1rem;">Material especializado para procedimientos ortopédicos.</p>
+          <a href="ortopedia.html" class="btn" style="font-size: 0.95rem; padding: 0.45rem 1.2rem; background-color: #004080; color: white; border-radius: 30px; transition: background-color 0.3s ease; border: none;">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-card" style="cursor:pointer; border-radius:1rem; background: rgba(255, 255, 255, 0.25); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="ima/maxi.png" alt="Maxilofacial" style="max-height: 120px; margin: 10px auto 5px auto; border-radius: 1rem; transition: transform 0.3s ease;">
+        <div class="category-content text-center" style="padding: 0 1rem 1rem;">
+          <h5 style="font-size: 1.3rem; font-weight: 700; color: #002856; margin-bottom: 0.5rem; display:flex; align-items:center; justify-content:center; gap: 8px;">
+            <i class="bi bi-clipboard-plus" style="color:#004080; font-size:1.5rem;"></i> Maxilofacial
+          </h5>
+          <p style="font-size:1rem; color:#004080; margin-bottom:1rem;">Soluciones para intervenciones maxilofaciales.</p>
+          <a href="maxilofacial.html" class="btn" style="font-size: 0.95rem; padding: 0.45rem 1.2rem; background-color: #004080; color: white; border-radius: 30px; transition: background-color 0.3s ease; border: none;">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-card" style="cursor:pointer; border-radius:1rem; background: rgba(255, 255, 255, 0.25); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="ima/hospi.png" alt="Hospitalarios" style="max-height: 120px; margin: 10px auto 5px auto; border-radius: 1rem; transition: transform 0.3s ease;">
+        <div class="category-content text-center" style="padding: 0 1rem 1rem;">
+          <h5 style="font-size: 1.3rem; font-weight: 700; color: #002856; margin-bottom: 0.5rem; display:flex; align-items:center; justify-content:center; gap: 8px;">
+            <i class="bi bi-hospital" style="color:#004080; font-size:1.5rem;"></i> Hospitalarios
+          </h5>
+          <p style="font-size:1rem; color:#004080; margin-bottom:1rem;">Material hospitalario de la más alta calidad.</p>
+          <a href="hospitalarios.html" class="btn" style="font-size: 0.95rem; padding: 0.45rem 1.2rem; background-color: #004080; color: white; border-radius: 30px; transition: background-color 0.3s ease; border: none;">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Fondo y base */
+  #servicios {
+    background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba(0, 64, 128, 0.03),
+        rgba(0, 64, 128, 0.03) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  /* Tarjetas de servicios */
+  .service-card {
+    background-color: #fff;       /* fondo blanco */
+    border: 1px solid #ddd;       /* borde gris claro */
+    border-radius: 10px;          /* bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* sombra sutil */
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    cursor: default;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  .service-icon {
+    font-size: 50px;
+    color: #004080; /* azul oscuro */
+    margin-bottom: 15px;
+  }
+  .service-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #004080;
+  }
+  .service-desc {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  /* Contadores */
+  .counter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #004080;
+    margin-bottom: 0.3rem;
+  }
+  .counter-text {
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  /* Barras de progreso */
+  .progress {
+    height: 20px;
+    border-radius: 10px;
+    background-color: #cfd8f7;
+    margin-bottom: 1rem;
+  }
+  .progress-bar {
+    background-color: #004080;
+    transition: width 2s ease;
+  }
+
+  /* FAQ acordeón */
+  .accordion-button:not(.collapsed) {
+    color: #004080;
+    background-color: #d9e6ff;
+  }
+  .accordion-button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Formulario */
+  .contact-form {
+    background: linear-gradient(135deg, #d9e6ff, #f0f5ff);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 576px) {
+    .service-icon {
+      font-size: 3rem;
+    }
+    .service-title {
+      font-size: 1.3rem;
+    }
+    .counter {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<section id="servicios">
+  <div class="container">
+    <h2 class="text-center text-primary fw-bold mb-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Estos son los servicios que ofrecemos para ti">Nuestros Servicios</h2>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-card h-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Atención 100% personalizada para resolver tus dudas">
+          <i class="bi bi-people-fill service-icon"></i>
+          <h3 class="service-title">Atención Personalizada</h3>
+          <p class="service-desc">Brindamos soporte y asesoría especializada para cada cliente, asegurando una experiencia única.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-card h-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Entregas rápidas y seguras a toda Honduras">
+          <i class="bi bi-truck service-icon"></i>
+          <h3 class="service-title">Entregas Rápidas</h3>
+          <p class="service-desc">Contamos con un sistema eficiente de entrega para que tus productos lleguen a tiempo y en perfectas condiciones.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-card h-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Soporte especializado para tus equipos médicos">
+          <i class="bi bi-gear-wide-connected service-icon"></i>
+          <h3 class="service-title">Soporte Técnico</h3>
+          <p class="service-desc">Asistencia técnica para el uso de nuestros productos médicos especializados.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-card h-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agenda citas con nuestros expertos fácilmente">
+          <i class="bi bi-calendar-check service-icon"></i>
+          <h3 class="service-title">Agendamiento de Citas</h3>
+          <p class="service-desc">Facilitamos el agendamiento para consultas o demostraciones con nuestros expertos.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-card h-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Opciones de pago cómodas y seguras">
+          <i class="bi bi-credit-card-2-front service-icon"></i>
+          <h3 class="service-title">Facilidades de Pago</h3>
+          <p class="service-desc">Ofrecemos opciones flexibles y seguras para facilitar tus compras.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="service-card h-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Calidad certificada internacionalmente">
+          <i class="bi bi-shield-lock service-icon"></i>
+          <h3 class="service-title">Calidad Garantizada</h3>
+          <p class="service-desc">Nuestros productos cumplen con los más altos estándares y certificaciones internacionales.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contadores -->
+    <div class="row text-center mt-5" data-aos="fade-up" data-aos-delay="800">
+      <div class="col-6 col-md-3">
+        <h3 class="counter" id="counter1">+500</h3>
+        <p class="counter-text">Clientes satisfechos</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h3 class="counter" id="counter2">+1200</h3>
+        <p class="counter-text">Entregas completadas</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h3 class="counter" id="counter3">+350</h3>
+        <p class="counter-text">Productos disponibles</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h3 class="counter" id="counter4">+100</h3>
+        <p class="counter-text">Personal capacitado</p>
+      </div>
+    </div>
+
+    <!-- Barras de progreso -->
+    <div class="mt-5" data-aos="fade-up" data-aos-delay="600">
+      <h4 class="text-primary fw-bold mb-3" data-bs-toggle="tooltip" title="Indicadores de desempeño">Indicadores de calidad</h4>
+      <div>
+        <label>Calidad garantizada al 99%</label>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div>
+        <label>Entregas a tiempo 95%</label>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div>
+        <label>Atencion Inmediata 98%</label>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="accordion mt-5" id="faqAccordion" data-aos="fade-up" data-aos-delay="1000">
+      <h4 class="text-primary fw-bold mb-3">Preguntas Frecuentes</h4>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+            ¿Cómo puedo solicitar un servicio?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" aria-labelledby="faq1-header" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Puedes solicitar un servicio directamente desde los botones “Solicitar este servicio” o contactándonos vía WhatsApp.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+            ¿Cuál es el tiempo estimado de entrega?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2-header" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Generalmente nuestras entregas se realizan en un plazo máximo de 48 horas después de confirmar el pedido.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+            ¿Ofrecen soporte técnico?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3-header" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Sí, contamos con un equipo técnico especializado disponible para ayudarte con cualquier duda o problema.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  // Inicializar tooltips Bootstrap
+  const tooltipTriggerList = [...document.querySelectorAll('[data-bs-toggle="tooltip"]')];
+  tooltipTriggerList.forEach(t => new bootstrap.Tooltip(t));
+
+  // Inicializar AOS (Animate On Scroll)
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+
+  // Contadores animados simples
+  function animateCounter(id, start, end, duration) {
+    let obj = document.getElementById(id);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let timer = setInterval(() => {
+      current += increment;
+      obj.textContent = '+' + current;
+      if (current == end) {
+        clearInterval(timer);
+      }
+    }, stepTime);
+  }
+  animateCounter("counter1", 490, 500, 2000);
+  animateCounter("counter2", 1190, 1200, 2000);
+  animateCounter("counter3", 340, 350, 2000);
+  animateCounter("counter4", 90, 100, 2000);
+
+  // Animar barras de progreso al entrar en vista
+  function animateProgressBars() {
+    const bars = document.querySelectorAll('.progress-bar');
+    bars.forEach(bar => {
+      const targetWidth = bar.getAttribute('aria-valuenow') + '%';
+      bar.style.width = targetWidth;
+    });
+  }
+  window.addEventListener('load', () => {
+    setTimeout(animateProgressBars, 500);
+  });
+
+
+  ;
+</script>
+
+<script>
+  function enviarWhatsApp(e) {
+    e.preventDefault();
+    const nombre = document.getElementById("nombre").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+    if (!nombre || !correo || !mensaje) {
+      alert("Por favor completa todos los campos.");
+      return false;
+    }
+    const texto = `Hola, me gustaría contactar a DIMEHOS.%0ANombre: ${encodeURIComponent(nombre)}%0ACorreo: ${encodeURIComponent(correo)}%0AMensaje: ${encodeURIComponent(mensaje)}`;
+    window.open(`https://wa.me/50497214099?text=${texto}`, "_blank");
+    return true;
+  }
+</script>
+
+<section id="galeria" class="container py-5">
+  <h2 class="text-center mb-4" style="color: #004080;">Variedad de Nuestros Productos</h2>
+  
+  <div id="multiImageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500">
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.26 AM.jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 1">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.27 AM (1).jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 2">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.27 AM (2).jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 3">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.27 AM.jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 4">
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.28 AM (1).jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 5">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.29 AM.jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 6">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.33 AM (1).jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 7">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.34 AM (1).jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 8">
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.34 AM.jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 9">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.34 AM (2).jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 10">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.37 AM (1).jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 11">
+          <img src="ima/galeria/WhatsApp Image 2025-06-20 at 8.02.36 AM.jpeg" class="img-fluid rounded" style="width: 22%;" alt="Imagen 12">
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="prev" aria-label="Anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="next" aria-label="Siguiente">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 991px) {
+    #multiImageCarousel .carousel-item div img {
+      width: 45% !important;
+      margin-bottom: 10px;
+    }
+  }
+  @media (max-width: 576px) {
+    #multiImageCarousel .carousel-item div img {
+      width: 90% !important;
+      margin-bottom: 12px;
+    }
+  }
+</style>
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-5" style="background: linear-gradient(to bottom right, #e6f0ff, #ffffff);">
+  <div class="container">
+    <h2 class="text-center text-primary mb-4"><i class="bi bi-envelope-fill"></i> Contáctanos</h2>
+
+    <div class="row g-4 mb-5">
+      <!-- FORMULARIO -->
+      <div class="col-lg-6">
+        <form id="formularioContacto" class="p-4 shadow rounded bg-white">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" required placeholder="Tu nombre completo">
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="correo" required placeholder="ejemplo@correo.com">
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" rows="4" required placeholder="Escribe tu mensaje..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100"><i class="bi bi-whatsapp"></i> Enviar a WhatsApp</button>
+        </form>
+      </div>
+
+      <!-- HORARIOS -->
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <div class="bg-light border rounded p-4 shadow-sm">
+          <h5 class="text-primary"><i class="bi bi-clock-fill"></i> Horarios de Atención</h5>
+          <ul class="list-unstyled mt-3">
+            <li><i class="bi bi-calendar-check-fill"></i> Lunes a Viernes: 8:00 AM – 5:00 PM</li>
+            <li><i class="bi bi-calendar-fill"></i> Sábados: 8:00 AM – 12:00 PM</li>
+            <li><i class="bi bi-x-octagon-fill text-danger"></i> Domingos: Atendiendo via Whatsapp</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- UBICACIONES LADO A LADO -->
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="bg-white p-3 rounded shadow-sm h-100">
+          <h5 class="text-primary"><i class="bi bi-geo-alt-fill"></i> Tegucigalpa</h5>
+          <p>Col. Miramontes, Comercial Miramontes, Local #2,<br>Contiguo a Edificio Rosenthal</p>
+          <p><i class="bi bi-telephone-fill"></i> +504 9721-4099</p>
+          <iframe
+            src="https://www.google.com/maps?q=14.08689897127405,-87.20075642327303&z=17&output=embed"
+            width="100%" height="220" style="border:0; border-radius: 10px;" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="bg-white p-3 rounded shadow-sm h-100">
+          <h5 class="text-primary"><i class="bi bi-geo-alt-fill"></i> San Pedro Sula</h5>
+          <p>Boulevard del Norte, Col. Bogran #201, 9 calle,<br>Edificio PLANMED, Costado Norte de Hospital del Valle</p>
+          <p><i class="bi bi-telephone-fill"></i> +504 9461-0407</p>
+          <p><i class="bi bi-telephone-fill"></i> +504 257-8215</p>
+          <iframe
+            src="https://www.google.com/maps?q=15.538033150577048,-88.01555125490698&z=17&output=embed"
+            width="100%" height="220" style="border:0; border-radius: 10px;" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.getElementById("formularioContacto").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    if (!nombre || !correo || !mensaje) {
+      alert("Por favor, completa todos los campos correctamente.");
+      return;
+    }
+
+    const texto = `Hola, me gustaría contactar a DIMEHOS.%0A🧑 Nombre: ${encodeURIComponent(nombre)}%0A📧 Correo: ${encodeURIComponent(correo)}%0A💬 Mensaje: ${encodeURIComponent(mensaje)}`;
+    const url = `https://wa.me/50497214099?text=${texto}`;
+    window.open(url, '_blank');
+  });
+</script>
+
+
+
+
+
+
+
+    
+
+
+
+<!-- FOOTER -->
+<footer style="background-color: #004080; color: white; padding: 30px 0;">
+  <div class="container">
+    <div class="row justify-content-between text-center text-md-start">
+      <div class="col-md-6 mb-3">
+        <h5>San Pedro Sula</h5>
+        <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+        <p><a href="https://wa.me/50494610407" target="_blank" class="text-white text-decoration-none"><i class="bi bi-whatsapp"></i> WhatsApp SPS +504 9461-0407</a></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h5>Tegucigalpa</h5>
+        <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+        <p><a href="https://wa.me/50497214099" target="_blank" class="text-white text-decoration-none"><i class="bi bi-whatsapp"></i> WhatsApp TGU +504 9721-4099</a></p>
+      </div>
+    </div>
+    <hr class="bg-light">
+    <p class="text-center mb-0">&copy; 2025 DIMEHOS. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- Botón flotante Contacto -->
+<button type="button" class="contactanos-btn" data-bs-toggle="modal" data-bs-target="#contactoModal">
+  Contáctanos
+</button>
+
+<!-- Modal Contacto -->
+<div class="modal fade" id="contactoModal" tabindex="-1" aria-labelledby="contactoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title"><i class="bi bi-envelope-fill"></i> Contacto DIMEHOS</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <h6>San Pedro Sula</h6>
+        <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+        <a href="https://wa.me/50494610407" target="_blank" class="btn btn-success w-100 mb-3"><i class="bi bi-whatsapp"></i> WhatsApp SPS +504 9461-0407</a>
+        <hr>
+        <h6>Tegucigalpa</h6>
+        <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+        <a href="https://wa.me/50497214099" target="_blank" class="btn btn-success w-100"><i class="bi bi-whatsapp"></i> WhatsApp TGU +504 9721-4099</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const btnModo = document.getElementById('modo-noche-btn');
+  const iconoModo = document.getElementById('icono-modo');
+  const body = document.body;
+
+  if (localStorage.getItem('modoNoche') === 'true') {
+    body.classList.add('noche');
+    iconoModo.classList.replace('bi-moon-fill', 'bi-sun-fill');
+  }
+
+  btnModo.addEventListener('click', () => {
+    body.classList.toggle('noche');
+    const activo = body.classList.contains('noche');
+    iconoModo.classList.toggle('bi-moon-fill', !activo);
+    iconoModo.classList.toggle('bi-sun-fill', activo);
+    localStorage.setItem('modoNoche', activo);
+  });
+</script>
+
+</body>
+</html>

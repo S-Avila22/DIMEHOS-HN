@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Terapia Endovascular</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(0, 64, 128, 0.03),
+          rgba(0, 64, 128, 0.03) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #004080, #0066cc);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .navbar-brand img {
+      height: 40px;
+    }
+    .header-categoria {
+      max-width: 1000px;
+      margin: 80px auto 25px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      gap: 15px;
+    }
+    .header-categoria h2 {
+      color: #004080;
+      font-weight: 700;
+      margin: 0;
+    }
+    .buscador-categoria {
+      max-width: 300px;
+      width: 100%;
+    }
+    .categoria-btns {
+      max-width: 1000px;
+      margin: 0 auto 25px auto;
+      padding: 0 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .categoria-btns .btn {
+      flex: none;
+    }
+    .productos-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+      padding: 0 15px;
+    }
+    .producto {
+      width: calc(100% / 6 - 15px);
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,64,128,0.15);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .producto:hover {
+      box-shadow: 0 15px 35px rgba(0,64,128,0.3);
+    }
+    .producto img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      max-height: 120px;
+      transition: transform 0.3s;
+      margin-bottom: 8px;
+    }
+    .producto:hover img {
+      transform: scale(1.05);
+    }
+    .producto-nombre {
+      font-weight: bold;
+      color: #004080;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .btn-buy {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-bottom: 8px;
+    }
+    .btn-buy:hover {
+      background-color: #0059b3;
+    }
+    .descripcion-hover {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 50, 0.7);
+      color: white;
+      padding: 6px 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 0 0 10px 10px;
+      font-size: 12px;
+      line-height: 1.2;
+      pointer-events: none;
+    }
+    .producto:hover .descripcion-hover {
+      opacity: 1;
+    }
+    @media (max-width: 992px) {
+      .producto {
+        width: calc(100% / 3 - 15px);
+      }
+    }
+    @media (max-width: 576px) {
+      .producto {
+        width: calc(100% / 2 - 15px);
+      }
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 30px 0;
+    }
+    .contactanos-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #004080;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+      cursor: pointer;
+      border: none;
+    }
+    .contactanos-btn:hover {
+      background: #0059b3;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR ONE PAGE MEJORADO -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#inicio">
+      <img src="ima/logo1.png" alt="DIMEHOS" style="height: 40px; margin-right: 10px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#inicio"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#nosotros"><i class="bi bi-info-circle-fill"></i> Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="#productos"><i class="bi bi-box-seam"></i> Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicios"><i class="bi bi-briefcase-fill"></i> Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeria"><i class="bi bi-images"></i> Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto"><i class="bi bi-envelope-fill"></i> Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div style="height: 70px;"></div>
+
+<!-- HEADER CATEGORÍA -->
+<div class="header-categoria">
+  <h2>Terapia Endovascular Metronic</h2>
+  <div class="buscador-categoria">
+    <input type="text" id="buscador" class="form-control" placeholder="Buscar producto en Terapia Endovascular..." onkeyup="filtrarProductos()" />
+  </div>
+</div>
+
+<!-- BOTONES DE NAVEGACIÓN -->
+<div class="categoria-btns">
+  <a href="index.html#productos" class="btn btn-outline-primary">Volver a productos</a>
+
+  <a href="maxilofacial.html" class="btn btn-outline-primary">Maxilofacial</a>
+  <a href="ortopedia.html" class="btn btn-outline-primary">Ortopedia</a>
+  <a href="neurocirugia.html" class="btn btn-outline-primary">Neurocirugía</a>
+  <a href="productoshospitalario.html" class="btn btn-outline-primary">Productos Hospitalarios</a>
+</div>
+
+<!-- PRODUCTOS -->
+<div class="productos-container" id="productos-container">
+
+  <div class="producto">
+    <img src="ima/endo/coils.png" alt="Coils 3D" />
+    <div class="producto-nombre">Coils 3D</div>
+    <button class="btn-buy" onclick="comprar('Coils 3D')">Comprar ahora</button>
+    <div class="descripcion-hover">Material endovascular. Diferentes medidas.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Coils helix.png" alt="Coils Helix" />
+    <div class="producto-nombre">Coils Helix</div>
+    <button class="btn-buy" onclick="comprar('Coils Helix')">Comprar ahora</button>
+    <div class="descripcion-hover">Material endovascular. Diferentes medidas. Material de platino.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Microcater Marathon.png" alt="Microcateter Marathon" />
+    <div class="producto-nombre">Microcateter Marathon</div>
+    <button class="btn-buy" onclick="comprar('Microcateter Marathon')">Comprar ahora</button>
+    <div class="descripcion-hover">Un solo orificio. Eje proximal semirrígido. Eje distal altamente flexible.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Microcateter Echelon.png" alt="Microcateter Echelon" />
+    <div class="producto-nombre">Microcatéter Echelon</div>
+    <button class="btn-buy" onclick="comprar('Microcatéter Echelon')">Comprar ahora</button>
+    <div class="descripcion-hover">Eje proximal semirrígido. Eje distal flexible. Superficie externa recubierta. Recto, 45° y 90°.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Microcateter REBAR.png" alt="Microcateter REBAR" />
+    <div class="producto-nombre">Microcateter REBAR</div>
+    <button class="btn-buy" onclick="comprar('Microcateter REBAR')">Comprar ahora</button>
+    <div class="descripcion-hover">Una sola luz, diseñado. Adaptador luer estándar. Compatible con sistema Onyx AVM LD y Onyx AN HD.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Microguia Mirage.png" alt="Microguia Mirage" />
+    <div class="producto-nombre">Micro Guia Mirage</div>
+    <button class="btn-buy" onclick="comprar('Micro Guia Mirage')">Comprar ahora</button>
+    <div class="descripcion-hover">Acero inoxidable. Bobina distal de platino. Recubierto hidrofilícamente. Longitud de 200 cm.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Microguia Silver Speed.png" alt="Microguia Silver Speed" />
+    <div class="producto-nombre">Micro guia Silver Speed</div>
+    <button class="btn-buy" onclick="comprar('Micro guia Silver Speed')">Comprar ahora</button>
+    <div class="descripcion-hover">Punta suave. Excelente soporte y torque. Diámetro 0.014". Longitud 200 cm.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Microguia X-PEDION.png" alt="Microguia X-PEDION" />
+    <div class="producto-nombre">Microguia X-PEDION</div>
+    <button class="btn-buy" onclick="comprar('Microguia X-PEDION')">Comprar ahora</button>
+    <div class="descripcion-hover">Punta suave. Alto soporte. Diámetro 0.010". Longitud 200 cm.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Onyx.png" alt="Onyx" />
+    <div class="producto-nombre">ONYX</div>
+    <button class="btn-buy" onclick="comprar('ONYX')">Comprar ahora</button>
+    <div class="descripcion-hover">Se entrega de manera cohesiva. Compartimiento de lava. No fluye por sí solo, avanza empujado. Avanza a zonas de menor resistencia.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Pipeline Flex EMBOLIZACION.png" alt="Pepiline Flex Embolizacion" />
+    <div class="producto-nombre">Pepiline Flex Embolizacion</div>
+    <button class="btn-buy" onclick="comprar('Pepiline Flex Embolizacion')">Comprar ahora</button>
+    <div class="descripcion-hover">Conformidad flexible. Punta distal rediseñada y más suave. Se puede reposicionar y desplegar hasta dos veces.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/Microguia Avigo 0.014.png" alt="Microguia Avigo" />
+    <div class="producto-nombre">Micro Guia Avigo 0.014</div>
+    <button class="btn-buy" onclick="comprar('Micro Guia Avigo 0.014')">Comprar ahora</button>
+    <div class="descripcion-hover">Brinda soporte para mantener la estabilidad del catéter durante la navegación precisa.</div>
+  </div>
+
+  <div class="producto">
+    <img src="ima/endo/solitare ab.png" alt="Solitare AB" />
+    <div class="producto-nombre">Solitare AB</div>
+    <button class="btn-buy" onclick="comprar('Solitare AB')">Comprar ahora</button>
+    <div class="descripcion-hover">Dispositivo de trombectomía mecánica diseñado para restaurar la sangre mediante la eliminación de trombos en pacientes con accidente cerebrovascular isquémico.</div>
+  </div>
+
+</div>
+
+<!-- BOTÓN CONTÁCTANOS -->
+<button class="contactanos-btn" data-bs-toggle="modal" data-bs-target="#contactoModal">Contáctanos</button>
+
+<!-- MODAL CONTACTO -->
+<div class="modal fade" id="contactoModal" tabindex="-1" aria-labelledby="contactoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="contactoModalLabel"><i class="bi bi-envelope-fill"></i> Contacto DIMEHOS</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <h6>San Pedro Sula</h6>
+        <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+        <p><a href="https://wa.me/50494610407" target="_blank" class="btn btn-success w-100 mb-3"><i class="bi bi-whatsapp"></i> WhatsApp SPS +504 9461-0407</a></p>
+        <hr>
+        <h6>Tegucigalpa</h6>
+        <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+        <p><a href="https://wa.me/50497214099" target="_blank" class="btn btn-success w-100"><i class="bi bi-whatsapp"></i> WhatsApp TGU +504 9721-4099</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row justify-content-between text-center text-md-start">
+      <div class="col-md-6 mb-3">
+        <h5>San Pedro Sula</h5>
+        <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+        <p><a href="https://wa.me/50494610407" target="_blank" class="text-white">WhatsApp SPS +504 9461-0407</a></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h5>Tegucigalpa</h5>
+        <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+        <p><a href="https://wa.me/50497214099" target="_blank" class="text-white">WhatsApp TGU +504 9721-4099</a></p>
+      </div>
+    </div>
+    <hr class="bg-light" />
+    <p class="text-center mb-0">&copy; 2025 DIMEHOS. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  function filtrarProductos() {
+    const filtro = document.getElementById('buscador').value.toLowerCase();
+    document.querySelectorAll('.producto').forEach(producto => {
+      const nombre = producto.querySelector('.producto-nombre').textContent.toLowerCase();
+      producto.style.display = nombre.includes(filtro) ? '' : 'none';
+    });
+  }
+  function comprar(producto) {
+    const link = `https://wa.me/50494610407?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(producto)}`;
+    window.open(link, '_blank');
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

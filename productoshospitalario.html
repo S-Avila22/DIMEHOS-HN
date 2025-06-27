@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hospitalarios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(0, 64, 128, 0.03),
+          rgba(0, 64, 128, 0.03) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #004080, #0066cc);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .navbar-brand img {
+      height: 40px;
+    }
+    .header-categoria {
+      max-width: 1000px;
+      margin: 80px auto 20px auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+    .nombre-categoria {
+      flex-shrink: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #004080;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none;
+    }
+    .buscador-categoria {
+      flex-grow: 1;
+      max-width: 300px;
+      width: 100%;
+    }
+    .categoria-btns {
+      max-width: 1000px;
+      margin: 0 auto 20px auto;
+      padding: 0 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .productos-container {
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+      padding: 0 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .producto {
+      width: calc(100% / 5 - 15px); /* 5 productos por fila */
+      text-align: center;
+      position: relative;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      padding: 10px;
+      transition: box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .producto:hover {
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    }
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+      max-height: 120px;
+      transition: transform 0.3s;
+      filter: drop-shadow(0 5px 3px rgba(0,0,0,0.2));
+      margin-bottom: 10px;
+    }
+    .producto img:hover {
+      transform: scale(1.05);
+    }
+    .producto-nombre {
+      font-weight: bold;
+      margin-top: 0;
+      color: #004080;
+      font-size: 1rem;
+      user-select: none;
+    }
+    .descripcion-hover {
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 50, 0.7);
+      color: white;
+      padding: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 0 0 10px 10px;
+      font-size: 12px;
+      line-height: 1.2;
+      pointer-events: none;
+      user-select: none;
+    }
+    .producto:hover .descripcion-hover {
+      opacity: 1;
+    }
+    .btn-comprar {
+      margin-top: auto;
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      user-select: none;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+    .btn-comprar:hover {
+      background-color: #0059b3;
+      color: white;
+      text-decoration: none;
+    }
+    @media (max-width: 992px) {
+      .producto { width: calc(100% / 3 - 15px); } /* 3 productos por fila en tablet */
+    }
+    @media (max-width: 576px) {
+      .producto { width: calc(100% / 2 - 15px); } /* 2 productos por fila en móvil */
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 30px 0;
+    }
+    .contactanos-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #004080;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1050;
+      cursor: pointer;
+      border: none;
+    }
+    .contactanos-btn:hover {
+      background: #0059b3;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="ima/logo1.png" alt="DIMEHOS">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html"><i class="bi bi-info-circle-fill"></i> Sobre Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicios.html"><i class="bi bi-briefcase-fill"></i> Servicios</a></li>
+          <li class="nav-item"><a class="nav-link active" href="productos.html"><i class="bi bi-box-seam"></i> Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeria.html"><i class="bi bi-images"></i> Galería</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html"><i class="bi bi-envelope-fill"></i> Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER CATEGORIA -->
+  <div class="header-categoria">
+    <div class="nombre-categoria">Productos Hospitalarios</div>
+    <div class="buscador-categoria">
+      <input type="text" id="buscador" class="form-control" placeholder="Buscar producto en Hospitalarios..." onkeyup="filtrarProductos()">
+    </div>
+  </div>
+
+  <!-- BOTONES ENTRE CATEGORÍAS -->
+  <div class="categoria-btns">
+    <a href="index.html#productos" class="btn btn-outline-primary">Volver a productos</a>
+
+    <a href="endovascular.html" class="btn btn-outline-primary">Terapia Endovascular Metronic</a>
+    <a href="ortopedia.html" class="btn btn-outline-primary">Ortopedia</a>
+    <a href="neurocirugia.html" class="btn btn-outline-primary">Neurocirugía</a>
+    <a href="maxilofacial.html" class="btn btn-outline-primary">Maxilofacial</a>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <div class="productos-container" id="productos-container">
+    <div class="producto">
+      <img src="ima/P-hospitalarios/Batas.png" alt="Batas" loading="lazy" />
+      <div class="descripcion-hover">Se utilizan como barrera contra la transmisión de fluidos y microbios durante la cirugía.</div>
+      <div class="producto-nombre">Batas</div>
+      <a href="https://wa.me/504XXXXXXXX" target="_blank" class="btn-comprar">Comprar Ahora</a>
+    </div>
+    <div class="producto">
+      <img src="ima/P-hospitalarios/Chaleco-y-collarin-rayos-x.png" alt="Chaleco y Collarín RX" loading="lazy" />
+      <div class="descripcion-hover">Protegen órganos y glándula tiroides en estudios radiológicos.</div>
+      <div class="producto-nombre">Chaleco y Collarín RX</div>
+      <a href="https://wa.me/504XXXXXXXX" target="_blank" class="btn-comprar">Comprar Ahora</a>
+    </div>
+    <div class="producto">
+      <img src="ima/P-hospitalarios/Colchon-de-aire-anti-ulceras.png" alt="Colchón antiúlceras" loading="lazy" />
+      <div class="descripcion-hover">Ayuda a pacientes encamados a evitar escaras por presión.</div>
+      <div class="producto-nombre">Colchón antiúlceras</div>
+      <a href="https://wa.me/504XXXXXXXX" target="_blank" class="btn-comprar">Comprar Ahora</a>
+    </div>
+    <div class="producto">
+      <img src="ima/P-hospitalarios/gorros.png" alt="Gorros quirúrgicos" loading="lazy" />
+      <div class="descripcion-hover">Previenen la contaminación quirúrgica y la caída de cabellos.</div>
+      <div class="producto-nombre">Gorros quirúrgicos</div>
+      <a href="https://wa.me/504XXXXXXXX" target="_blank" class="btn-comprar">Comprar Ahora</a>
+    </div>
+  </div>
+
+  <!-- BOTÓN CONTÁCTANOS -->
+  <button type="button" class="contactanos-btn" data-bs-toggle="modal" data-bs-target="#contactoModal">
+    Contáctanos
+  </button>
+
+  <!-- MODAL CONTACTO -->
+  <div class="modal fade" id="contactoModal" tabindex="-1" aria-labelledby="contactoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="contactoModalLabel"><i class="bi bi-envelope-fill"></i> Contacto DIMEHOS</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <h6>San Pedro Sula</h6>
+          <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+          <p><a href="https://wa.me/50494610407" target="_blank" class="btn btn-success w-100 mb-3"><i class="bi bi-whatsapp"></i> WhatsApp SPS +9461-0407</a></p>
+          <hr>
+          <h6>Tegucigalpa</h6>
+          <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+          <p><a href="https://wa.me/50497214099" target="_blank" class="btn btn-success w-100"><i class="bi bi-whatsapp"></i> WhatsApp TGU +9721-4099</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-6 mb-3">
+          <h5>San Pedro Sula</h5>
+          <p>Bulevar del Norte, Col. Bogran #201,<br> Edificio Planmed, Local #6,<br> Costado norte del Hospital del Valle</p>
+          <p><a href="https://wa.me/50494610407" target="_blank" class="text-white">WhatsApp SPS +504 9461-0407</a></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h5>Tegucigalpa</h5>
+          <p>Comercial Miramontes, Local #2,<br> Contiguo a Edificio Rosenthal</p>
+          <p><a href="https://wa.me/50497214099" target="_blank" class="text-white">WhatsApp TGU +504 9721-4099</a></p>
+        </div>
+      </div>
+      <hr class="bg-light" />
+      <p class="text-center mb-0">&copy; 2025 DIMEHOS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filtrarProductos() {
+      const filtro = document.getElementById('buscador').value.toLowerCase();
+      const productos = document.querySelectorAll('.producto');
+      productos.forEach(producto => {
+        const nombre = producto.querySelector('.producto-nombre').textContent.toLowerCase();
+        producto.style.display = nombre.includes(filtro) ? '' : 'none';
+      });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
